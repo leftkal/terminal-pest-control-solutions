@@ -11,7 +11,19 @@ export default function ScrollToTop() {
     const targetId = sectionIds.has(sectionId) ? sectionId : 'home'
 
     window.requestAnimationFrame(() => {
-      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
+      if (targetId === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        return
+      }
+
+      const section = document.getElementById(targetId)
+      const target = section?.querySelector('.container') || section
+      const navHeight = document.querySelector('.navbar')?.offsetHeight || 0
+
+      if (target) {
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+      }
     })
   }, [pathname])
 

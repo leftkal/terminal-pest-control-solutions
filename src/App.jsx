@@ -18,6 +18,22 @@ function sectionFromPath(pathname) {
   return sectionIds.includes(section) ? section : 'home'
 }
 
+function scrollToSectionContent(sectionId) {
+  if (sectionId === 'home') {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    return
+  }
+
+  const section = document.getElementById(sectionId)
+  const target = section?.querySelector('.container') || section
+  const navHeight = document.querySelector('.navbar')?.offsetHeight || 0
+
+  if (target) {
+    const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+  }
+}
+
 export default function App() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -30,7 +46,7 @@ export default function App() {
     const targetPath = sectionId === 'home' ? '/' : `/${sectionId}`
 
     if (currentSection === sectionId) {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+      scrollToSectionContent(sectionId)
       return
     }
 

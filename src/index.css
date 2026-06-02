@@ -84,7 +84,7 @@ p { color: var(--color-text-muted); line-height: 1.7; }
 }
 
 .section-pad {
-  padding: 108px 0;
+  padding: 76px 0;
   scroll-margin-top: 0;
 }
 
@@ -466,7 +466,7 @@ p { color: var(--color-text-muted); line-height: 1.7; }
 @media (max-width: 900px) {
   body { padding-bottom: 68px; }
   .container { width: min(100% - 28px, 1160px); }
-  .section-pad { padding: 76px 0; scroll-margin-top: 0; }
+  .section-pad { padding: 56px 0; scroll-margin-top: 0; }
   .nav-inner { min-height: 70px; grid-template-columns: 1fr auto auto; gap: 12px; }
   .nav-phone { display: none; }
   .menu-button { display: inline-grid; place-items: center; }
