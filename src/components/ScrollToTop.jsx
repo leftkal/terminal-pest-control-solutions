@@ -17,11 +17,10 @@ export default function ScrollToTop() {
       }
 
       const section = document.getElementById(targetId)
-      const target = section?.querySelector('.container') || section
       const navHeight = document.querySelector('.navbar')?.offsetHeight || 0
 
-      if (target) {
-        const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16
+      if (section) {
+        const top = section.getBoundingClientRect().top + window.scrollY - navHeight
         window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
       }
     })
